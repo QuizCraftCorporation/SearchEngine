@@ -43,7 +43,7 @@ class DatabaseHTTP(BaseHTTPRequestHandler):
                 response["operation"] = "SUCCESS"
                 response["payload"] = quizzes_data
             else:
-                response["operation"] = "FAILED"
+                response["operation"] = "EMPTY"
             self.wfile.write(bytes(json.dumps(response), "utf-8"))
         else:
             response = {}
