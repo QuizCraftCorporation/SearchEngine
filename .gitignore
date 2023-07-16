@@ -2,5 +2,6 @@
 */*/__pycache__/
 /__pycache__/
 */.venv
-vector_store
+vector_store/index.faiss
+vector_store/index.pkl
 test.py
