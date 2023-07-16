@@ -4,11 +4,12 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.schema import Document
 
-SAVE_FOLDER = os.path.join(pathlib.Path(__file__).parent.resolve(), "./vector_store")
+cur_file_path = pathlib.Path(__file__).parent.resolve()
+SAVE_FOLDER = os.path.join(cur_file_path, "./vector_store")
 
 class TextDataBase():
     def __init__(self) -> None:
-        self.embeddings = HuggingFaceEmbeddings(model_name="./models/all-mpnet-base-v2")
+        self.embeddings = HuggingFaceEmbeddings(model_name=os.path.join(cur_file_path, "./models/all-mpnet-base-v2"))
         self.db = None
         if os.path.exists(os.path.join(SAVE_FOLDER, "index.faiss")):
             self.db = FAISS.load_local(SAVE_FOLDER, embeddings=self.embeddings)
