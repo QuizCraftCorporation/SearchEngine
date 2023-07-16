@@ -33,11 +33,3 @@ class TextDataBase():
         else:
             self.db.add_documents([document])
         self.db.save_local(SAVE_FOLDER)
-
-
-# test = TextDataBase()
-# test.add_text("Mother finger mother finger", "1")
-# test.add_text("Johny Johny yes papa", "2")
-# test.add_text("Crystals is very style appropriate", "3")
-
-# print(test.search("Woman", 3))

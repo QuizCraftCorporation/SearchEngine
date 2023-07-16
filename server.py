@@ -1,9 +1,19 @@
+import argparse
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from database import TextDataBase
 import json
 
-HOST = "127.0.0.1"
-PORT = 1234
+parser = argparse.ArgumentParser(
+    prog="Search engine",
+    description="Simple search engine based on embeddings and vector store"
+)
+parser.add_argument('--address', help="Address of hosting (for example 127.0.0.1)", default="127.0.0.1")
+parser.add_argument('--port', help="Port of service (for example 1234)", default=1234)
+
+args = parser.parse_args()
+
+HOST = args.address
+PORT = int(args.port)
 
 DATABASE = TextDataBase()
 
