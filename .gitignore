@@ -5,3 +5,5 @@
 vector_store/index.faiss
 vector_store/index.pkl
 test.py
+act.bat
+opencmd.bat
