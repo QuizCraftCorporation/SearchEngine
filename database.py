@@ -1,6 +1,8 @@
+from langchain.embeddings import HuggingFaceEmbeddings
+
 class TextBase():
     def __init__(self) -> None:
-        pass
+        self.embeddings = HuggingFaceEmbeddings(cache_folder="models/all-mpnet-base-v2")
 
     def search():
         pass
@@ -13,3 +15,4 @@ class TextBase():
 
     def clear():
         pass
+
