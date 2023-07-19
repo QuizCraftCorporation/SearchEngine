@@ -3,6 +3,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 from database import TextDataBase
 import json
 
+# Parsing command line arguments
 parser = argparse.ArgumentParser(
     prog="Search engine",
     description="Simple search engine based on embeddings and vector store"
@@ -15,9 +16,13 @@ args = parser.parse_args()
 HOST = args.address
 PORT = int(args.port)
 
+# Loading database
 DATABASE = TextDataBase()
 
 class DatabaseHTTP(BaseHTTPRequestHandler):
+    """
+    Class to handle HTTP request and utilize text database for searching.
+    """
     
     def do_GET(self):
         self.send_response(200)
@@ -60,6 +65,7 @@ class DatabaseHTTP(BaseHTTPRequestHandler):
             response["operation"] = "FAILED"
             self.wfile.write(bytes(json.dumps(response), "utf-8"))
 
+# Set up server
 server = HTTPServer((HOST, PORT), DatabaseHTTP)
 print(f"SERVER RUNNED ON {HOST}:{PORT}")
 server.serve_forever()
